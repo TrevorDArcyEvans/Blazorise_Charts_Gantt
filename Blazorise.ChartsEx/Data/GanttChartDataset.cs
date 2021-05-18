@@ -9,9 +9,9 @@ namespace Blazorise.ChartsEx
     /// Defaults as per https://www.npmjs.com/package/chartjs-plugin-gantt
     /// </remarks>
     [DataContract]
-    public class GannttChartDataset<T> : ChartDataset<T>
+    public class GanttChartDataset<T> : ChartDataset<T>
     {
-        public GannttChartDataset() : base(
+        public GanttChartDataset() : base(
             label: string.Empty,
             backgroundColor: new List<string> { ChartColor.FromRgba( 0, 0, 0, 0.1f ) },
             borderColor: new List<string> { ChartColor.FromRgba( 0, 0, 0, 0.1f ) },

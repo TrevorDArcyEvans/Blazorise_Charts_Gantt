@@ -3,7 +3,7 @@
 namespace Blazorise.ChartsEx
 {
     [DataContract]
-    public class GannttChartOptions : ChartOptions
+    public class GanttChartOptions : ChartOptions
     {
         /// <summary>
         /// Percent (0-1) of the available width each bar should be within the category width. 1.0 will take the whole category width and put the bars right next to each other.

@@ -1,6 +1,6 @@
 ﻿namespace Blazorise.ChartsEx
 {
-    public partial class GannttChart<TItem> : BaseChart<GannttChartDataset<TItem>, TItem, GannttChartOptions, GannttChartModel>
+    public partial class GanttChart<TItem> : BaseChart<GanttChartDataset<TItem>, TItem, GanttChartOptions, GanttChartModel>
     {
         #region Members
 
@@ -8,7 +8,7 @@
 
         #region Constructors
 
-        public GannttChart()
+        public GanttChart()
         {
             Type = ChartType.Ganntt;
         }
