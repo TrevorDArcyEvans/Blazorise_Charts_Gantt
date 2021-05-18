@@ -18,7 +18,7 @@ namespace Blazorise.ChartsEx
             borderWidth: 0
         )
         {
-            Type = "bar";
+            Type = "gantt";
         }
 
         /// <summary>
