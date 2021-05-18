@@ -13,8 +13,8 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
-        <PackageReference Include="Blazorise" Version="0.9.3.6"/>
-        <PackageReference Include="Blazorise.Bootstrap" Version="0.9.3.6"/>
+        <PackageReference Include="Blazorise" Version="0.9.3.6" />
+        <PackageReference Include="Blazorise.Bootstrap" Version="0.9.3.6" />
     </ItemGroup>
     
 </Project>
