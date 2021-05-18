@@ -1,0 +1,60 @@
+@page "/chartdemo"
+
+@using Blazorise.ChartsEx
+
+<h1>Gannt Chart Demo</h1>
+
+<LineChart @ref="_chart" TItem="double"/>
+
+@code {
+  LineChart<double> _chart;
+
+  string[] Labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
+  List<string> BackgroundColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
+  List<string> BorderColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
+
+  bool _isAlreadyInitialised;
+
+  Random _random = new Random(DateTime.Now.Millisecond);
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (!_isAlreadyInitialised)
+    {
+      _isAlreadyInitialised = true;
+
+      await Task.WhenAll(
+        HandleRedraw(_chart, GetLineChartDataset));
+    }
+  }
+
+  async Task HandleRedraw<TDataSet, TItem, TOptions, TModel>(Blazorise.ChartsEx.BaseChart<TDataSet, TItem, TOptions, TModel> chart, Func<TDataSet> getDataSet)
+    where TDataSet : ChartDataset<TItem>
+    where TOptions : ChartOptions
+    where TModel : ChartModel
+  {
+    await chart.Clear();
+
+    await chart.AddLabelsDatasetsAndUpdate(Labels, getDataSet());
+  }
+
+  LineChartDataset<double> GetLineChartDataset()
+  {
+    return new LineChartDataset<double>
+    {
+      Label = "# of randoms",
+      Data = RandomizeData(),
+      BackgroundColor = BackgroundColors,
+      BorderColor = BorderColors,
+      Fill = true,
+      PointRadius = 3,
+      BorderWidth = 1,
+      PointBorderColor = Enumerable.Repeat(BorderColors.First(), 6).ToList()
+    };
+  }
+
+  List<double> RandomizeData()
+  {
+    return new List<double> { _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble() };
+  }
+}
