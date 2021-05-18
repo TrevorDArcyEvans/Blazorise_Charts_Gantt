@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Blazorise.ChartsEx
 {
   [DataContract]
-  public class RadarChartModel : ChartModel
+  public class RadarChartModel : ChartPointModel
   {
     [JsonPropertyName( "label" )]
     public string Label { get; set; }

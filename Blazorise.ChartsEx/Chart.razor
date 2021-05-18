@@ -1,5 +1,5 @@
 ﻿@typeparam TItem
-@inherits BaseChart<ChartDataset<TItem>, TItem, ChartOptions, ChartModel>
+@inherits BaseChart<ChartDataset<TItem>, TItem, ChartOptions, ChartPointModel>
 <CascadingValue Value="@this" IsFixed="true">
     <canvas @ref="ElementRef" id="@ElementId" class="@ClassNames" style="@StyleNames" @attributes="@Attributes">
         @ChildContent

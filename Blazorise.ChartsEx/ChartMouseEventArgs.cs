@@ -25,7 +25,7 @@ namespace Blazorise.ChartsEx
         /// Gets the full data point info.
         /// </summary>
         /// <remarks>
-        /// TODO: use ChartModel instead of object type once the System.Text.Json serializer is fixed!
+        /// TODO: use ChartPointModel instead of object type once the System.Text.Json serializer is fixed!
         /// </remarks>
         public object Model { get; }
     }
