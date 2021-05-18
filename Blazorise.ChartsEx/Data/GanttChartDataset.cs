@@ -44,5 +44,8 @@ namespace Blazorise.ChartsEx
         /// </summary>
         [DataMember]
         public int HoverBorderWidth { get; set; } = 1;
+        
+        [DataMember]
+        public double Height { get; set; } = 0.125f;
     }
 }

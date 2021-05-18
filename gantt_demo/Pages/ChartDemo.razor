@@ -4,18 +4,16 @@
 
 <h1>Gantt Chart Demo</h1>
 
-<LineChart @ref="_chart" TItem="double"/>
+<GanttChart @ref="_chart" TItem="GanttChartData<double>"/>
 
 @code {
-  LineChart<double> _chart;
+  private GanttChart<GanttChartData<double>> _chart;
 
-  string[] Labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
-  List<string> BackgroundColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
-  List<string> BorderColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
+  private readonly string[] Labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
+  private readonly List<string> BackgroundColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
+  private readonly List<string> BorderColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
 
-  bool _isAlreadyInitialised;
-
-  Random _random = new Random(DateTime.Now.Millisecond);
+  private bool _isAlreadyInitialised;
 
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
@@ -24,11 +22,11 @@
       _isAlreadyInitialised = true;
 
       await Task.WhenAll(
-        HandleRedraw(_chart, GetLineChartDataset));
+        HandleRedraw(_chart, GetChartDataset));
     }
   }
 
-  async Task HandleRedraw<TDataSet, TItem, TOptions, TModel>(Blazorise.ChartsEx.BaseChart<TDataSet, TItem, TOptions, TModel> chart, Func<TDataSet> getDataSet)
+  private async Task HandleRedraw<TDataSet, TItem, TOptions, TModel>(BaseChart<TDataSet, TItem, TOptions, TModel> chart, Func<TDataSet> getDataSet)
     where TDataSet : ChartDataset<TItem>
     where TOptions : ChartOptions
     where TModel : ChartModel
@@ -38,23 +36,40 @@
     await chart.AddLabelsDatasetsAndUpdate(Labels, getDataSet());
   }
 
-  LineChartDataset<double> GetLineChartDataset()
+  private GanttChartDataset<GanttChartData<double>> GetChartDataset()
   {
-    return new LineChartDataset<double>
+    return new GanttChartDataset<GanttChartData<double>>
     {
-      Label = "# of randoms",
-      Data = RandomizeData(),
+      Label = "Test data",
+      Data = GetData(),
       BackgroundColor = BackgroundColors,
       BorderColor = BorderColors,
-      Fill = true,
-      PointRadius = 3,
-      BorderWidth = 1,
-      PointBorderColor = Enumerable.Repeat(BorderColors.First(), 6).ToList()
+      BorderWidth = 1
     };
   }
 
-  List<double> RandomizeData()
+  private List<GanttChartData<double>> GetData()
   {
-    return new List<double> { _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble(), _random.Next(3, 50) * _random.NextDouble() };
+    return new List<GanttChartData<double>> 
+    {
+      new GanttChartData<double>
+      {
+        X = new GanttChartInterval<double>
+        {
+          From = 1f,
+          To = 2f
+        },
+        Y = 1f
+      },
+      new GanttChartData<double>
+      {
+        X = new GanttChartInterval<double>
+        {
+          From = 2f,
+          To = 6f
+        },
+        Y = 3f
+      }
+    };
   }
 }
