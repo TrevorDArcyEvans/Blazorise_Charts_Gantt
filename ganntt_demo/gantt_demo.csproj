@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>gantt_demo</AssemblyName>
+    <RootNamespace>gantt_demo</RootNamespace>
+    <Company>gantt_demo</Company>
+    <Product>gantt_demo</Product>
   </PropertyGroup>
 
   <ItemGroup>

@@ -323,7 +323,7 @@ namespace Blazorise.ChartsEx
                     return System.Text.Json.JsonSerializer.Deserialize<PolarChartModel>( data );
                 case ChartType.Radar:
                     return System.Text.Json.JsonSerializer.Deserialize<RadarChartModel>( data );
-                case ChartType.Ganntt:
+                case ChartType.Gantt:
                     return System.Text.Json.JsonSerializer.Deserialize<GanttChartModel>( data );
                 default:
                     return null;

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace gannt_demo
+namespace gantt_demo
 {
   public class Program
   {

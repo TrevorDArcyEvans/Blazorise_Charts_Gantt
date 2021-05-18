@@ -9,6 +9,6 @@
         PolarArea,
         Radar,
         HorizontalBar,
-        Ganntt
+        Gantt
     }
 }

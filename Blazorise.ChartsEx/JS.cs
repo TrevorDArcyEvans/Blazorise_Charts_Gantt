@@ -123,7 +123,7 @@ namespace Blazorise.ChartsEx
                 ChartType.Doughnut => "doughnut",
                 ChartType.Radar => "radar",
                 ChartType.PolarArea => "polarArea",
-                ChartType.Ganntt => "ganntt",
+                ChartType.Gantt => "gantt",
                 _ => "line",
             };
         }

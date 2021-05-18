@@ -10,7 +10,7 @@
 
         public GanttChart()
         {
-            Type = ChartType.Ganntt;
+            Type = ChartType.Gantt;
         }
 
         #endregion
