@@ -4,10 +4,10 @@
 
 <h1>Gantt Chart Time Demo</h1>
 
-<GanttChart @ref="_chart" TItem="GanttChartData<double>"/>
+<GanttChart @ref="_chart" TItem="GanttChartData<DateTime>"/>
 
 @code {
-  private GanttChart<GanttChartData<double>> _chart;
+  private GanttChart<GanttChartData<DateTime>> _chart;
 
   private readonly string[] Labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
   private readonly List<string> BackgroundColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
@@ -17,6 +17,27 @@
   {
     if (firstRender)
     {
+      var options = new GanttChartOptions
+      {
+        Scales = new Scales
+        {
+          XAxes = new List<Axis>(
+            new Axis[]
+          {
+            new Axis
+            {
+              // This field seems to upset the JSON serialiser
+              // but we need it for temporal Gantt charts ;-(
+              //Type = "time-gantt",
+              
+              Display = true
+            }
+          })
+        }
+      };
+
+      //await _chart.SetOptions(options);
+      _chart.Options = options;
       await HandleRedraw(_chart, GetChartDataset);
     }
   }
@@ -31,9 +52,9 @@
     await chart.AddLabelsDatasetsAndUpdate(Labels, getDataSet());
   }
 
-  private GanttChartDataset<GanttChartData<double>> GetChartDataset()
+  private GanttChartDataset<GanttChartData<DateTime>> GetChartDataset()
   {
-    return new GanttChartDataset<GanttChartData<double>>
+    return new GanttChartDataset<GanttChartData<DateTime>>
     {
       Label = "Test data",
       Data = GetData(),
@@ -43,25 +64,25 @@
     };
   }
 
-  private List<GanttChartData<double>> GetData()
+  private List<GanttChartData<DateTime>> GetData()
   {
-    return new List<GanttChartData<double>> 
+    return new List<GanttChartData<DateTime>> 
     {
-      new GanttChartData<double>
+      new GanttChartData<DateTime>
       {
-        X = new GanttChartInterval<double>
+        X = new GanttChartInterval<DateTime>
         {
-          From = 1f,
-          To = 2f
+          From = new DateTime(2006, 2, 20, 6, 3,0),
+          To = new DateTime(2006, 2, 20, 12, 35,22)
         },
         Y = 1f
       },
-      new GanttChartData<double>
+      new GanttChartData<DateTime>
       {
-        X = new GanttChartInterval<double>
+        X = new GanttChartInterval<DateTime>
         {
-          From = 2f,
-          To = 6f
+          From = new DateTime(2006, 2, 20, 6, 0,30),
+          To = new DateTime(2006, 2, 20, 18, 45,0)
         },
         Y = 3f
       }
