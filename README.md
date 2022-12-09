@@ -1,37 +1,37 @@
-# [Gantt Chart](https://github.com/anton-shchyrov/chartjs-plugin-gantt.git) support for [Blazorise.Charts](https://blazorise.com/docs/extensions/chart/)
+~ $ - # [Gantt Chart](https://github.com/anton-shchyrov/chartjs-plugin-gantt.git) support for [Blazorise.Charts](https://blazorise.com/docs/extensions/chart/)
 Integrating another chart type - what could possibly go wrong?
 
 ![](pic/gantt.png)
 
-## Background
+~ $ - ## Background
 I'm using [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) in another project and needed to
 show some time based data in a Gantt chart.  A quick web search showed a few commercial Blazor Gantt chart 
 components, no free ones and a handful of open source, Javascript ones.  The most promising one was
-[Gantt plugin](https://github.com/anton-shchyrov/chartjs-plugin-gantt.git), which is a plugin to draw gantt series 
+~ $[Gantt plugin](https://github.com/anton-shchyrov/chartjs-plugin-gantt.git), which is a plugin to draw gantt series 
 in [Chart.js](https://www.chartjs.org/) library.
 
 As I'm already using [Blazorise](https://github.com/Megabit/Blazorise), which already has a
 [charts extension](https://github.com/Megabit/Blazorise/tree/master/Source/Extensions/Blazorise.Charts), how difficult
 would it be to integrate another chart?
 
-## Gant plugin overview
+~ $ ## Gant plugin overview
 
 <details>
   <summary>Gratuitous screenshots</summary>
 
-### Sample chart
+~ $ ### Sample chart
 
 ![](pic/sample.png)
 
-### Basic
+~ $ ### Basic
 
 ![](pic/basic.png)
 
-### Different styles
+~ $ ### Different styles
 
 ![](pic/styles.png)
 
-### Different sizes
+~ $ ### Different sizes
 
 ![](pic/sizes.png)
 
